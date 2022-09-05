@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Credenciais } from 'src/app/credenciais';
+import { Client } from 'src/app/shared/model/client.model';
+import { ClientService } from 'src/app/shared/service/client.service';
 
 @Component({
   selector: 'app-home',
@@ -19,9 +21,17 @@ export class HomeComponent implements OnInit {
   cpf: FormControl = new FormControl(null, Validators.required);
   dataNascimento = new FormControl('', [Validators.minLength(10)])
 
-  constructor() { }
+  constructor(
+    public clientService: ClientService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  clientForm = new FormGroup({nome: this.nome, cpf: this.cpf, dataNascimento: this.dataNascimento});
+
+  onSubmit() {
+    console.warn(this.clientForm.value)
   }
 
   errorValidNome() {

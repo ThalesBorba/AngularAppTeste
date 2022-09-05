@@ -1,6 +1,6 @@
 <div class="container">
-    <form class="form mat-elevation-z8">
-    <h1><b>Seja Bem-Vindo(a) - Efetue o Login!</b></h1>
+    <form [formGroup]="clientForm" class="form mat-elevation-z8"  (ngSubmit)="onSubmit()">
+    <h1><b>Seja Bem-Vindo(a) - Registre-se!</b></h1>
     
         <mat-form-field class="full-width" appearance="fill">
           <mat-label>Nome</mat-label>
@@ -20,7 +20,7 @@
             <mat-error *ngIf="nome.invalid">{{ errorValidNascimento() }}</mat-error>
           </mat-form-field>
 
-          <button [disabled]="errorValidNome() || errorValidCpf() || errorValidNascimento()" class="full-width mat-elevation-z4" mat-raised-button color="primary">Entrar</button>
-          <button class="full-width mat-elevation-z4" mat-button color color="warn">Cancelar</button>
+          <button type="submit" [disabled]="errorValidNome() || errorValidCpf() || errorValidNascimento()" class="full-width mat-elevation-z4" mat-raised-button color="primary">Registrar</button>
+          <button type="reset" class="full-width mat-elevation-z4" mat-button color color="warn">Cancelar</button>
       </form>
 </div>

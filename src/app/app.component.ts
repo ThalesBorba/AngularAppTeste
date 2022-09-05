@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'My-app';
-  nome = 'José'
+  
+  
+
 }
