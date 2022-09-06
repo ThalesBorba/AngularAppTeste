@@ -7,6 +7,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  title: any = 'my-app';
   
   
 

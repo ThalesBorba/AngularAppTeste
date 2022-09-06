@@ -37,6 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatInputModule,
     MatIconModule,
+    MatToolbarModule,
     ReactiveFormsModule,
     NgxMaskModule.forRoot()
   ],
@@ -44,3 +45,4 @@ import { HttpClientModule } from '@angular/common/http';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

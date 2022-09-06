@@ -20,7 +20,7 @@
       <mat-error *ngIf="this.clientForm.value.dataNascimento.invalid">{{ errorValidNascimento() }}</mat-error>
     </mat-form-field>
 
-    <button type="submit" [disabled]="errorValidNome() || errorValidCpf() || errorValidNascimento()" class="full-width mat-elevation-z4" mat-raised-button color="primary"
+    <button [disabled]="!clientForm.valid" type="submit" class="full-width mat-elevation-z4" mat-raised-button color="primary"
       (click)="this.onSubmit()">Registrar</button>
     <button type="reset" class="full-width mat-elevation-z4" mat-button color color="warn">Cancelar</button>
   </form>
