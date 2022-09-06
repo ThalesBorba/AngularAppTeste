@@ -21,4 +21,12 @@ export class ClientService {
   public getClientWithFlag(flag: string): Observable<Client> {
     return this.httpClient.get<Client>(this.apiUrl + '?flag=' + flag)
   }
+
+  public postCliente(cliente: Client): Observable<Client> {
+    return this.httpClient.post<Client>(
+      this.apiUrl,
+      cliente,
+      this.httpOptions
+    );
+  }
 }

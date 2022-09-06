@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   clientForm = new FormGroup({nome: this.nome, cpf: this.cpf, dataNascimento: this.dataNascimento});
 
   onSubmit() {
-    console.warn(this.clientForm.value)
+    postClient(this.clientForm.value)
   }
 
   errorValidNome() {
@@ -57,4 +57,8 @@ export class HomeComponent implements OnInit {
   }
 
 
+}
+
+function postClient(value: Partial<{ nome: string | null; cpf: any; dataNascimento: string | null; }>) {
+  throw new Error('Function not implemented.');
 }
