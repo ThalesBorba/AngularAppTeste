@@ -2,13 +2,25 @@
   <form [formGroup]="clientForm" class="form mat-elevation-z8">
     <h1><b>Seja Bem-Vindo(a) - Registre-se!</b></h1>
 
-    <mat-label>Nome</mat-label>
-    <input matInput id="nome" name="nome" class="form-control" formControlName="nome">
-    <input matInput id="cpf" name="cpf" class="form-control" formControlName="cpf">
-    <input matInput id="dataNascimento" name="dataNascimento" class="form-control" formControlName="dataNascimento">
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput id="nome" name="nome" class="form-control" formControlName="nome" maxlength="100" matInput placeholder="Ex. Thales Borba">
+      <mat-error *ngIf="this.clientForm.value.nome.invalid">{{ errorValidNome() }}</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>CPF</mat-label>
+      <input matInput id="cpf" name="cpf" class="form-control" formControlName="cpf" maxlength="18" matInput placeholder="Ex. 123.123.123-00" mask="000.000.000-00">
+      <mat-error *ngIf="this.clientForm.value.cpf.invalid">{{ errorValidCpf() }}</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Data de Nascimento</mat-label>
+      <input matInput id="dataNascimento" name="dataNascimento" class="form-control" formControlName="dataNascimento" matInput placeholder="Ex. 00/00/0000">
+      <mat-error *ngIf="this.clientForm.value.dataNascimento.invalid">{{ errorValidNascimento() }}</mat-error>
+    </mat-form-field>
 
-
-    <button type="submit" class="full-width mat-elevation-z4" mat-raised-button color="primary"
+    <button type="submit" [disabled]="errorValidNome() || errorValidCpf() || errorValidNascimento()" class="full-width mat-elevation-z4" mat-raised-button color="primary"
       (click)="this.onSubmit()">Registrar</button>
     <button type="reset" class="full-width mat-elevation-z4" mat-button color color="warn">Cancelar</button>
   </form>

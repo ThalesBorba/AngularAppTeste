@@ -30,15 +30,15 @@ export class HomeComponent implements OnInit {
     this.clientService.postClient(this.clientForm.value).subscribe((result) => {});
   }
 
- /* errorValidNome() {
-    if(this.clientForm.nome.invalid) {
+ errorValidNome() {
+    if(this.clientForm.value.nome.invalid) {
       return 'O nome deve ter entre 5 e 100 caracteres!'
     }
     return false;
   }
 
   errorValidCpf() {
-    if(this.cpf.invalid) {
+    if(this.clientForm.value.cpf.invalid) {
       return 'O cpf deve ter 14 caracteres!'
     }
     return false;
@@ -46,11 +46,11 @@ export class HomeComponent implements OnInit {
 
   
   errorValidNascimento() {
-    if(this.dataNascimento.invalid) {
+    if(this.clientForm.value.dataNascimento.invalid) {
       return 'A data de nascimento deve ser preenchida'
     }
     return false;
-  }*/
+  }
 
 
 }
