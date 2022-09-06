@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Credenciais } from 'src/app/credenciais';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Client } from 'src/app/shared/model/client.model';
 import { ClientService } from 'src/app/shared/service/client.service';
 
@@ -11,31 +10,28 @@ import { ClientService } from 'src/app/shared/service/client.service';
 })
 export class HomeComponent implements OnInit {
 
-  client: Client = {
-    nome: '',
-    cpf: '',
-    dataNascimento: ''
-  }
-
-  nome = new FormControl('', [Validators.minLength(5)])
-  cpf: FormControl = new FormControl(null, Validators.required);
-  dataNascimento = new FormControl('', [Validators.minLength(10)])
+  public clientForm!: FormGroup;
 
   constructor(
-    public clientService: ClientService
+    public clientService: ClientService, 
+    private fb: FormBuilder
+
   ) { }
 
   ngOnInit(): void {
+    this.clientForm = this.fb.group({
+      nome: ['', [Validators.required]],
+      cpf: ['', [Validators.required]],
+      dataNascimento: ['', [Validators.required]]
+    });
   }
-
-  clientForm = new FormGroup({nome: this.nome, cpf: this.cpf, dataNascimento: this.dataNascimento});
 
   onSubmit() {
-    this.clientService.postClient(this.client)
+    this.clientService.postClient(this.clientForm.value).subscribe((result) => {});
   }
 
-  errorValidNome() {
-    if(this.nome.invalid) {
+ /* errorValidNome() {
+    if(this.clientForm.nome.invalid) {
       return 'O nome deve ter entre 5 e 100 caracteres!'
     }
     return false;
@@ -54,11 +50,8 @@ export class HomeComponent implements OnInit {
       return 'A data de nascimento deve ser preenchida'
     }
     return false;
-  }
+  }*/
 
 
 }
 
-function postClient(value: Partial<{ nome: string | null; cpf: any; dataNascimento: string | null; }>) {
-  throw new Error('Function not implemented.');
-}
