@@ -1,5 +1,5 @@
 export interface Client {
-    name: string;
+    nome: string;
     cpf: string;
-    date: string;
+    dataNascimento: string;
 }

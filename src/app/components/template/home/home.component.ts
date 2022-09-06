@@ -11,7 +11,7 @@ import { ClientService } from 'src/app/shared/service/client.service';
 })
 export class HomeComponent implements OnInit {
 
-  creds: Credenciais = {
+  client: Client = {
     nome: '',
     cpf: '',
     dataNascimento: ''
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   clientForm = new FormGroup({nome: this.nome, cpf: this.cpf, dataNascimento: this.dataNascimento});
 
   onSubmit() {
-    postClient(this.clientForm.value)
+    this.clientService.postClient(this.client)
   }
 
   errorValidNome() {

@@ -8,7 +8,7 @@ import { Client } from '../model/client.model';
 })
 export class ClientService {
 
-  apiUrl = 'http://localhost:3000';
+  apiUrl = 'http://localhost:3000/people';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -22,7 +22,7 @@ export class ClientService {
     return this.httpClient.get<Client>(this.apiUrl + '?flag=' + flag)
   }
 
-  public postCliente(cliente: Client): Observable<Client> {
+  public postClient(cliente: Client): Observable<Client> {
     return this.httpClient.post<Client>(
       this.apiUrl,
       cliente,
