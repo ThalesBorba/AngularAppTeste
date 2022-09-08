@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ClientService } from 'src/app/shared/service/client.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ClientService } from '../../../shared/service/client.service';
 
 @Component({
   selector: 'app-home',
