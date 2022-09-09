@@ -17,14 +17,14 @@ export class ClientService {
     })
   };
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  public getClientByName(name: string): Observable<ClientResponse> {
-    return this.httpClient.get<ClientResponse>(this.apiUrl + '?nome=' + name)
+  public getClients() {
+    return this.http.get(this.apiUrl)
   }
 
   public postClient(cliente: Client): Observable<Client> {
-    return this.httpClient.post<Client>(
+    return this.http.post<Client>(
       this.apiUrl,
       cliente,
       this.httpOptions

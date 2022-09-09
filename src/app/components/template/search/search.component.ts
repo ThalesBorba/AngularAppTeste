@@ -14,30 +14,28 @@ import { ClientService } from 'src/app/shared/service/client.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  constructor(public clientService: ClientService) {
+
+  clientList!: any;
+  constructor(private clientService: ClientService) {
 
   }
   
   ngOnInit(): void {
     
-  }
-
-  clients: ClientResponse[] = [];
-  clientName: string = '';
-
-  getClients() {
-    this.clientService.getClientByName(this.clientName).subscribe(data => {
-      this.clients = this.clients;
-    })
+    this.clientList = this.clientService.getClients().subscribe(client => {
+      this.dataSource.data = client as ClientResponse[]
+    });
+    console.log(this.clientList)
+    
   }
 
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'dataNascimento'];
-  dataSource = new MatTableDataSource(this.clients);
+  dataSource = new MatTableDataSource(this.clientList);
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.clientName = filterValue;
-    console.log(this.clientName)
+    this.clientList = filterValue;
+    console.log(this.clientList)
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
