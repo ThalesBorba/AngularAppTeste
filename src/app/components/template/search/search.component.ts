@@ -1,8 +1,12 @@
+
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { map, Observable, tap } from 'rxjs';
-import { Client } from 'src/app/shared/model/client.model';
+import { MatTableDataSource } from '@angular/material/table';
+import { Observable } from 'rxjs';
+import { ClientResponse } from 'src/app/shared/model/clientResponse.model';
+import { ClientService } from 'src/app/shared/service/client.service';
+
+
 
 @Component({
   selector: 'app-search',
@@ -10,27 +14,31 @@ import { Client } from 'src/app/shared/model/client.model';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  constructor(public clientService: ClientService) {
 
-  queryField = new FormControl();
-  readonly SEARCH_URL = 'http://localhost:3000/people?nome='
-  results$!: Observable<any>;
-  total!: number;
-
-  constructor(private http: HttpClient) { }
-
-  ngOnInit() {
+  }
+  
+  ngOnInit(): void {
+    
   }
 
-  onSearch() {
-    
-    let value = this.queryField.value;
-    if (value && (value = value.trim()) !== '') {
-      this.results$ = this.http.get(this.SEARCH_URL + value)
-        .pipe(
-          tap((res: any) => this.total = res.total),
-          map((res: any) => res.results$)
-        );
-    }
+  clients: ClientResponse[] = [];
+  clientName: string = '';
+
+  getClients() {
+    this.clientService.getClientByName(this.clientName).subscribe(data => {
+      this.clients = this.clients;
+    })
+  }
+
+  displayedColumns: string[] = ['id', 'nome', 'cpf', 'dataNascimento'];
+  dataSource = new MatTableDataSource(this.clients);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.clientName = filterValue;
+    console.log(this.clientName)
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

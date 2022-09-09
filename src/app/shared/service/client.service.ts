@@ -2,6 +2,7 @@ import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Client } from '../model/client.model';
+import { ClientResponse } from '../model/clientResponse.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,8 @@ export class ClientService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getClientWithFlag(flag: string): Observable<Client> {
-    return this.httpClient.get<Client>(this.apiUrl + '?flag=' + flag)
+  public getClientByName(name: string): Observable<ClientResponse> {
+    return this.httpClient.get<ClientResponse>(this.apiUrl + '?nome=' + name)
   }
 
   public postClient(cliente: Client): Observable<Client> {
