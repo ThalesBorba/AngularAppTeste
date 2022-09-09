@@ -17,14 +17,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { NgxMaskModule } from 'ngx-mask';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ClientService } from './shared/service/client.service';
+import { SearchComponent } from './components/template/search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    SearchComponent
   ],
   imports: [
     HttpClientModule,

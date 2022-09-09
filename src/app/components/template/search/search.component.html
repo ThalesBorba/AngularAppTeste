@@ -1,0 +1,40 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<div class="container search-table">
+            <div class="search-box">
+                <div class="row">
+                    <div class="col-md-9">
+                        <input 
+                        type="text" 
+                        id="myInput" 
+                        class="form-control" 
+                        [formControl]="queryField" 
+                        placeholder="Digite o nome para pesquisar"
+                        />
+                    </div> 
+                    <div class="col-auto">
+                        <button class="but btn-lg btn-success"
+                         (click)="onSearch()">Pesquisar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="search-list">
+                <h3>{{total}} Resultados Encontrados</h3>
+                <table class="table" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Data de nascimento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let result of results$ | async">
+                        <td>{{result.nome}}</td>
+                        <td>{{result.cpf}}</td>
+                        <td>{{result.dataNascimento}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
