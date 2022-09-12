@@ -8,16 +8,19 @@ import { HeaderComponent } from './components/template/header/header.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HomeComponent } from './components/template/home/home.component';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 import { NgxMaskModule } from 'ngx-mask';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './components/template/search/search.component';
+import { NavComponent } from './components/template/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { SearchComponent } from './components/template/search/search.component';
     HeaderComponent,
     HomeComponent,
     FooterComponent,
-    SearchComponent
+    SearchComponent,
+    NavComponent
   ],
   imports: [
     HttpClientModule,
@@ -41,6 +45,8 @@ import { SearchComponent } from './components/template/search/search.component';
     MatIconModule,
     MatToolbarModule,
     ReactiveFormsModule,
+    MatSidenavModule,
+    MatListModule,
     NgxMaskModule.forRoot()
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
