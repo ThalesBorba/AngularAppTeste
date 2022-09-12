@@ -45,6 +45,12 @@ table {
   width: 30rem;
 }
 
+.table-container {
+  overflow-y: scroll;
+  max-height: 20rem;
+  overflow-x: hidden;
+}
+
 .mat-form-field {
   font-size: 16px;
   width: 30rem;
